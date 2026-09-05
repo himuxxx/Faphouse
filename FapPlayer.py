@@ -349,26 +349,7 @@ def index():
                     font-size: 12px;
                     word-break: break-all;
                 }
-                .endpoints {
-                    margin-top: 30px;
-                    padding: 20px;
-                    background: #222;
-                    border-radius: 8px;
-                    text-align: left;
-                }
-                .endpoints h3 {
-                    color: #888;
-                    font-size: 14px;
-                    margin-bottom: 10px;
-                }
-                .endpoint {
-                    padding: 8px 0;
-                    border-bottom: 1px solid #333;
-                    font-size: 13px;
-                    color: #aaa;
-                }
-                .endpoint:last-child { border-bottom: none; }
-                .endpoint strong { color: #4CAF50; }
+                /* API Endpoints সেকশন সম্পূর্ণ রিমুভ করা হয়েছে */
             </style>
         </head>
         <body>
@@ -385,13 +366,7 @@ def index():
                         💡 Example: <code>https://faphouse2.com/videos/shared-bed-stepsister-fuck-C6Qi1u</code>
                     </div>
                 </div>
-                
-                <div class="endpoints">
-                    <h3>📡 API Endpoints</h3>
-                    <div class="endpoint"><strong>GET</strong> /play?url=VIDEO_URL - Watch video</div>
-                    <div class="endpoint"><strong>GET</strong> /api/m3u8?url=VIDEO_URL - Get M3U8 URL</div>
-                    <div class="endpoint"><strong>GET</strong> /api/status - Check status</div>
-                </div>
+                <!-- এন্ডপয়েন্ট সেকশন বাদ দেওয়া হয়েছে -->
             </div>
         </body>
         </html>
@@ -440,6 +415,37 @@ def play_video():
                             padding: 20px;
                             box-shadow: 0 8px 32px rgba(0,0,0,0.8);
                         }
+                        /* Glassmorphism Back Button - উপরে */
+                        .back-link {
+                            display: inline-flex;
+                            align-items: center;
+                            gap: 8px;
+                            padding: 10px 22px;
+                            margin-bottom: 15px;
+                            color: #ffffff;
+                            text-decoration: none;
+                            font-size: 14px;
+                            font-weight: 500;
+                            letter-spacing: 0.3px;
+                            background: rgba(255, 255, 255, 0.08);
+                            backdrop-filter: blur(12px);
+                            -webkit-backdrop-filter: blur(12px);
+                            border: 1px solid rgba(255, 255, 255, 0.15);
+                            border-radius: 50px;
+                            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+                            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                            width: fit-content;
+                        }
+                        .back-link:hover {
+                            background: rgba(255, 255, 255, 0.18);
+                            border-color: rgba(255, 255, 255, 0.4);
+                            transform: scale(1.03) translateX(-3px);
+                            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+                        }
+                        .back-link:active {
+                            transform: scale(0.95);
+                        }
+
                         .video-wrapper {
                             width: 100%;
                             background: #000;
@@ -496,17 +502,14 @@ def play_video():
                             50% { opacity: 0.3; }
                             100% { opacity: 1; }
                         }
-                        .back-link {
-                            display: inline-block;
-                            margin-top: 10px;
-                            color: #888;
-                            text-decoration: none;
-                        }
-                        .back-link:hover { color: #fff; }
+                        /* পুরোনো .back-link স্টাইল আর নেই, উপরে নতুন গ্লাস স্টাইল */
                     </style>
                 </head>
                 <body>
                     <div class="container">
+                        <!-- ⬆️ ব্যাক বাটন এখন একদম উপরে -->
+                        <a href="/" class="back-link">← Back to Home</a>
+
                         <div class="status-bar">
                             <h2>
                                 🎬 Faphouse
@@ -534,8 +537,6 @@ def play_video():
                                 </div>
                             </div>
                         </div>
-                        
-                        <a href="/" class="back-link">← Back to Home</a>
                     </div>
                     
                     <script src="https://vjs.zencdn.net/8.0.0/video.min.js"></script>
