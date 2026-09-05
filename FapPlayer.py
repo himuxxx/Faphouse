@@ -62,7 +62,7 @@ class FaphouseClient:
         
         try:
             logger.info("  📡 Getting initial page...")
-            init_res = self.session.get(BASE_URL, timeout=8) # Timeout কমিয়ে 8 করা হয়েছে
+            init_res = self.session.get(BASE_URL, timeout=15)  # আগের মতো ১৫
             logger.info(f"  📡 Initial page status: {init_res.status_code}")
             
             payload = {
@@ -77,7 +77,7 @@ class FaphouseClient:
             login_res = self.session.post(
                 f"{BASE_URL}/api/auth/signin",
                 json=payload,
-                timeout=8 # Timeout কমিয়ে 8 করা হয়েছে
+                timeout=15  # আগের মতো ১৫
             )
             
             logger.info(f"  📡 Login response status: {login_res.status_code}")
@@ -171,7 +171,7 @@ class FaphouseClient:
                     'Upgrade-Insecure-Requests': '1'
                 }
                 
-                response = session.get(video_url, timeout=8, headers=headers) # Timeout কমিয়ে 8 করা হয়েছে
+                response = session.get(video_url, timeout=15, headers=headers)  # আগের মতো ১৫
                 logger.info(f"📡 Session GET Status: {response.status_code}")
                 
                 if response.status_code == 200:
@@ -198,7 +198,7 @@ class FaphouseClient:
                 'Upgrade-Insecure-Requests': '1'
             })
             
-            response = guest_session.get(video_url, timeout=8) # Timeout কমিয়ে 8 করা হয়েছে
+            response = guest_session.get(video_url, timeout=15)  # আগের মতো ১৫
             logger.info(f"📡 Guest Status: {response.status_code}")
             
             if response.status_code == 200:
@@ -440,13 +440,13 @@ def play_video():
                             padding: 20px;
                             box-shadow: 0 8px 32px rgba(0,0,0,0.8);
                         }
-                        /* Glassmorphism Back Button - উপরে রাখা হয়েছে */
+                        /* 🔹 Glassmorphism Back Button (উপরে) */
                         .back-link {
                             display: inline-flex;
                             align-items: center;
                             gap: 8px;
                             padding: 10px 22px;
-                            margin-bottom: 15px; /* নিচের এলিমেন্ট থেকে ব্যবধান */
+                            margin-bottom: 15px;
                             color: #ffffff;
                             text-decoration: none;
                             font-size: 14px;
@@ -456,7 +456,7 @@ def play_video():
                             backdrop-filter: blur(12px);
                             -webkit-backdrop-filter: blur(12px);
                             border: 1px solid rgba(255, 255, 255, 0.15);
-                            border-radius: 50px; /* গোলাকার পিল শেপ */
+                            border-radius: 50px;
                             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
                             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
                             width: fit-content;
@@ -531,7 +531,7 @@ def play_video():
                 </head>
                 <body>
                     <div class="container">
-                        <!-- 🚀 ব্যাক বাটন এখন এখানে (সবচেয়ে উপরে) -->
+                        <!-- 🚀 ব্যাক বাটন এখন উপরে (স্ট্যাটাস বারের আগে) -->
                         <a href="/" class="back-link">← Back to Home</a>
 
                         <div class="status-bar">
