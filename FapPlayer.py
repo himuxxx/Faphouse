@@ -62,7 +62,7 @@ class FaphouseClient:
         
         try:
             logger.info("  📡 Getting initial page...")
-            init_res = self.session.get(BASE_URL, timeout=15)  # আগের মতো ১৫
+            init_res = self.session.get(BASE_URL, timeout=10)
             logger.info(f"  📡 Initial page status: {init_res.status_code}")
             
             payload = {
@@ -77,7 +77,7 @@ class FaphouseClient:
             login_res = self.session.post(
                 f"{BASE_URL}/api/auth/signin",
                 json=payload,
-                timeout=15  # আগের মতো ১৫
+                timeout=15
             )
             
             logger.info(f"  📡 Login response status: {login_res.status_code}")
@@ -171,7 +171,7 @@ class FaphouseClient:
                     'Upgrade-Insecure-Requests': '1'
                 }
                 
-                response = session.get(video_url, timeout=15, headers=headers)  # আগের মতো ১৫
+                response = session.get(video_url, timeout=15, headers=headers)
                 logger.info(f"📡 Session GET Status: {response.status_code}")
                 
                 if response.status_code == 200:
@@ -198,7 +198,7 @@ class FaphouseClient:
                 'Upgrade-Insecure-Requests': '1'
             })
             
-            response = guest_session.get(video_url, timeout=15)  # আগের মতো ১৫
+            response = guest_session.get(video_url, timeout=15)
             logger.info(f"📡 Guest Status: {response.status_code}")
             
             if response.status_code == 200:
@@ -440,37 +440,6 @@ def play_video():
                             padding: 20px;
                             box-shadow: 0 8px 32px rgba(0,0,0,0.8);
                         }
-                        /* 🔹 Glassmorphism Back Button (উপরে) */
-                        .back-link {
-                            display: inline-flex;
-                            align-items: center;
-                            gap: 8px;
-                            padding: 10px 22px;
-                            margin-bottom: 15px;
-                            color: #ffffff;
-                            text-decoration: none;
-                            font-size: 14px;
-                            font-weight: 500;
-                            letter-spacing: 0.3px;
-                            background: rgba(255, 255, 255, 0.08);
-                            backdrop-filter: blur(12px);
-                            -webkit-backdrop-filter: blur(12px);
-                            border: 1px solid rgba(255, 255, 255, 0.15);
-                            border-radius: 50px;
-                            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-                            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-                            width: fit-content;
-                        }
-                        .back-link:hover {
-                            background: rgba(255, 255, 255, 0.18);
-                            border-color: rgba(255, 255, 255, 0.4);
-                            transform: scale(1.03) translateX(-3px);
-                            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
-                        }
-                        .back-link:active {
-                            transform: scale(0.95);
-                        }
-
                         .video-wrapper {
                             width: 100%;
                             background: #000;
@@ -527,13 +496,17 @@ def play_video():
                             50% { opacity: 0.3; }
                             100% { opacity: 1; }
                         }
+                        .back-link {
+                            display: inline-block;
+                            margin-top: 10px;
+                            color: #888;
+                            text-decoration: none;
+                        }
+                        .back-link:hover { color: #fff; }
                     </style>
                 </head>
                 <body>
                     <div class="container">
-                        <!-- 🚀 ব্যাক বাটন এখন উপরে (স্ট্যাটাস বারের আগে) -->
-                        <a href="/" class="back-link">← Back to Home</a>
-
                         <div class="status-bar">
                             <h2>
                                 🎬 Faphouse
@@ -561,6 +534,8 @@ def play_video():
                                 </div>
                             </div>
                         </div>
+                        
+                        <a href="/" class="back-link">← Back to Home</a>
                     </div>
                     
                     <script src="https://vjs.zencdn.net/8.0.0/video.min.js"></script>
