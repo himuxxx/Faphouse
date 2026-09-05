@@ -303,13 +303,64 @@ def index():
                     box-shadow: 0 8px 32px rgba(0,0,0,0.8);
                     text-align: center;
                 }
-                h1 { 
-                    font-size: 28px; 
-                    margin-bottom: 8px; 
+                .brand-header {
+                    margin-bottom: 20px;
+                    text-align: center;
                 }
-                .subtitle { 
-                    color: #888; 
-                    margin-bottom: 25px; 
+                .brand-main {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 14px;
+                    flex-wrap: wrap;
+                }
+                .brand-fap {
+                    font-size: 38px;
+                    font-weight: 900;
+                    letter-spacing: 4px;
+                    color: #f1c40f; /* হলুদ */
+                    text-shadow: 0 0 20px rgba(241, 196, 15, 0.2);
+                }
+                .brand-house {
+                    font-size: 38px;
+                    font-weight: 900;
+                    letter-spacing: 4px;
+                    color: #ffffff; /* সাদা */
+                    text-shadow: 0 0 20px rgba(255,255,255,0.1);
+                }
+                .brand-badge {
+                    background: #e74c3c;
+                    color: #fff;
+                    font-size: 14px;
+                    font-weight: 700;
+                    padding: 2px 12px;
+                    border-radius: 30px;
+                    letter-spacing: 0.5px;
+                }
+                .brand-player {
+                    font-size: 22px;
+                    font-weight: 300;
+                    color: #aaa;
+                    letter-spacing: 8px;
+                    margin-top: -4px;
+                }
+                .brand-tagline {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 12px;
+                    margin-top: 8px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    color: #888;
+                    letter-spacing: 2px;
+                }
+                .tagline-sep {
+                    color: #555;
+                }
+                .subtitle {
+                    color: #888;
+                    margin-bottom: 25px;
                     font-size: 15px;
                 }
                 .url-input {
@@ -365,14 +416,25 @@ def index():
                     display: inline-block;
                     max-width: 100%;
                 }
-
-                /* মোবাইলের জন্য অতিরিক্ত */
                 @media (max-width: 480px) {
                     .container {
                         padding: 20px 15px;
                     }
-                    h1 {
-                        font-size: 24px;
+                    .brand-fap, .brand-house {
+                        font-size: 30px;
+                        letter-spacing: 2px;
+                    }
+                    .brand-badge {
+                        font-size: 12px;
+                        padding: 1px 10px;
+                    }
+                    .brand-player {
+                        font-size: 18px;
+                        letter-spacing: 6px;
+                    }
+                    .brand-tagline {
+                        font-size: 11px;
+                        gap: 8px;
                     }
                     .subtitle {
                         font-size: 14px;
@@ -385,23 +447,35 @@ def index():
                         font-size: 16px;
                         padding: 12px;
                     }
-                    .hint code {
-                        font-size: 11px;
-                    }
                 }
                 @media (max-width: 380px) {
                     .container {
                         padding: 15px 10px;
                     }
-                    h1 {
-                        font-size: 20px;
+                    .brand-fap, .brand-house {
+                        font-size: 26px;
+                    }
+                    .brand-player {
+                        font-size: 16px;
+                        letter-spacing: 4px;
                     }
                 }
             </style>
         </head>
         <body>
             <div class="container">
-                <h1>🎬 Faphouse Player</h1>
+                <div class="brand-header">
+                    <div class="brand-main">
+                        <span class="brand-fap">FAP</span><span class="brand-house">HOUSE</span>
+                        <span class="brand-badge">18+</span>
+                    </div>
+                    <div class="brand-player">PLAYER</div>
+                    <div class="brand-tagline">
+                        <span>ZERDLATENCY</span>
+                        <span class="tagline-sep">•</span>
+                        <span>DUALPLATFORM</span>
+                    </div>
+                </div>
                 <p class="subtitle">Enter any video URL to watch</p>
                 
                 <div class="url-input">
@@ -461,7 +535,6 @@ def play_video():
                             padding: 16px;
                             box-shadow: 0 8px 32px rgba(0,0,0,0.8);
                         }
-                        /* Glassmorphism Back Button - উপরে */
                         .back-link {
                             display: inline-flex;
                             align-items: center;
@@ -492,7 +565,6 @@ def play_video():
                         .back-link:active {
                             transform: scale(0.95);
                         }
-
                         .video-wrapper {
                             width: 100%;
                             background: #000;
@@ -553,8 +625,6 @@ def play_video():
                             font-size: 14px;
                             color: #aaa;
                         }
-
-                        /* মোবাইলের জন্য রেস্পন্সিভ */
                         @media (max-width: 600px) {
                             .container {
                                 padding: 12px;
@@ -610,9 +680,7 @@ def play_video():
                 </head>
                 <body>
                     <div class="container">
-                        <!-- ⬆️ ব্যাক বাটন একদম উপরে -->
                         <a href="/" class="back-link">← Back to Home</a>
-
                         <div class="status-bar">
                             <h2>
                                 🎬 Faphouse
