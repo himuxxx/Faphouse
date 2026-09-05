@@ -280,7 +280,7 @@ def index():
         <html>
         <head>
             <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
             <title>🎬 Faphouse Player</title>
             <style>
                 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -292,30 +292,39 @@ def index():
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    padding: 20px;
+                    padding: 15px;
                 }
                 .container {
                     max-width: 600px;
                     width: 100%;
                     background: #1a1a1a;
-                    border-radius: 12px;
-                    padding: 40px;
+                    border-radius: 16px;
+                    padding: 30px 20px;
                     box-shadow: 0 8px 32px rgba(0,0,0,0.8);
                     text-align: center;
                 }
-                h1 { font-size: 32px; margin-bottom: 10px; }
-                .subtitle { color: #888; margin-bottom: 30px; }
+                h1 { 
+                    font-size: 28px; 
+                    margin-bottom: 8px; 
+                }
+                .subtitle { 
+                    color: #888; 
+                    margin-bottom: 25px; 
+                    font-size: 15px;
+                }
                 .url-input {
-                    margin: 20px 0;
+                    margin: 15px 0;
                 }
                 .url-input input {
                     width: 100%;
-                    padding: 15px;
+                    padding: 14px 16px;
                     background: #333;
                     border: 1px solid #444;
-                    border-radius: 8px;
+                    border-radius: 10px;
                     color: #fff;
                     font-size: 16px;
+                    -webkit-appearance: none;
+                    appearance: none;
                 }
                 .url-input input:focus {
                     outline: none;
@@ -323,33 +332,71 @@ def index():
                 }
                 .url-input button {
                     width: 100%;
-                    padding: 15px;
-                    margin-top: 15px;
+                    padding: 14px;
+                    margin-top: 14px;
                     background: #4CAF50;
                     border: none;
-                    border-radius: 8px;
+                    border-radius: 10px;
                     color: #fff;
                     font-weight: bold;
                     font-size: 18px;
                     cursor: pointer;
                     transition: background 0.3s;
+                    -webkit-tap-highlight-color: transparent;
                 }
                 .url-input button:hover {
                     background: #45a049;
                 }
+                .url-input button:active {
+                    transform: scale(0.97);
+                }
                 .hint {
                     color: #666;
                     font-size: 13px;
-                    margin-top: 15px;
+                    margin-top: 16px;
+                    padding: 0 5px;
                 }
                 .hint code {
                     background: #222;
                     padding: 4px 8px;
-                    border-radius: 4px;
+                    border-radius: 6px;
                     font-size: 12px;
                     word-break: break-all;
+                    display: inline-block;
+                    max-width: 100%;
                 }
-                /* API Endpoints সেকশন সম্পূর্ণ রিমুভ করা হয়েছে */
+
+                /* মোবাইলের জন্য অতিরিক্ত */
+                @media (max-width: 480px) {
+                    .container {
+                        padding: 20px 15px;
+                    }
+                    h1 {
+                        font-size: 24px;
+                    }
+                    .subtitle {
+                        font-size: 14px;
+                    }
+                    .url-input input {
+                        font-size: 15px;
+                        padding: 12px 14px;
+                    }
+                    .url-input button {
+                        font-size: 16px;
+                        padding: 12px;
+                    }
+                    .hint code {
+                        font-size: 11px;
+                    }
+                }
+                @media (max-width: 380px) {
+                    .container {
+                        padding: 15px 10px;
+                    }
+                    h1 {
+                        font-size: 20px;
+                    }
+                }
             </style>
         </head>
         <body>
@@ -366,7 +413,6 @@ def index():
                         💡 Example: <code>https://faphouse2.com/videos/shared-bed-stepsister-fuck-C6Qi1u</code>
                     </div>
                 </div>
-                <!-- এন্ডপয়েন্ট সেকশন বাদ দেওয়া হয়েছে -->
             </div>
         </body>
         </html>
@@ -392,7 +438,7 @@ def play_video():
                 <html>
                 <head>
                     <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
                     <title>🎬 Video Player</title>
                     <link href="https://vjs.zencdn.net/8.0.0/video-js.css" rel="stylesheet" />
                     <style>
@@ -405,23 +451,23 @@ def play_video():
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            padding: 20px;
+                            padding: 10px;
                         }
                         .container {
                             max-width: 1200px;
                             width: 100%;
                             background: #1a1a1a;
-                            border-radius: 12px;
-                            padding: 20px;
+                            border-radius: 16px;
+                            padding: 16px;
                             box-shadow: 0 8px 32px rgba(0,0,0,0.8);
                         }
                         /* Glassmorphism Back Button - উপরে */
                         .back-link {
                             display: inline-flex;
                             align-items: center;
-                            gap: 8px;
-                            padding: 10px 22px;
-                            margin-bottom: 15px;
+                            gap: 6px;
+                            padding: 8px 18px;
+                            margin-bottom: 12px;
                             color: #ffffff;
                             text-decoration: none;
                             font-size: 14px;
@@ -435,6 +481,7 @@ def play_video():
                             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
                             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
                             width: fit-content;
+                            -webkit-tap-highlight-color: transparent;
                         }
                         .back-link:hover {
                             background: rgba(255, 255, 255, 0.18);
@@ -449,7 +496,7 @@ def play_video():
                         .video-wrapper {
                             width: 100%;
                             background: #000;
-                            border-radius: 8px;
+                            border-radius: 10px;
                             overflow: hidden;
                             position: relative;
                             aspect-ratio: 16/9;
@@ -459,10 +506,10 @@ def play_video():
                             height: 100%;
                         }
                         .info {
-                            margin-top: 15px;
-                            padding: 15px;
+                            margin-top: 12px;
+                            padding: 12px 14px;
                             background: #222;
-                            border-radius: 8px;
+                            border-radius: 10px;
                             font-size: 13px;
                             word-break: break-all;
                         }
@@ -475,13 +522,13 @@ def play_video():
                             border-radius: 20px;
                             font-size: 11px;
                             font-weight: bold;
-                            margin-left: 10px;
+                            margin-left: 8px;
                         }
                         .status-bar {
                             display: flex;
                             align-items: center;
-                            gap: 20px;
-                            margin-bottom: 15px;
+                            gap: 12px;
+                            margin-bottom: 12px;
                             flex-wrap: wrap;
                         }
                         .status-bar h2 {
@@ -502,12 +549,68 @@ def play_video():
                             50% { opacity: 0.3; }
                             100% { opacity: 1; }
                         }
-                        /* পুরোনো .back-link স্টাইল আর নেই, উপরে নতুন গ্লাস স্টাইল */
+                        .video-title {
+                            font-size: 14px;
+                            color: #aaa;
+                        }
+
+                        /* মোবাইলের জন্য রেস্পন্সিভ */
+                        @media (max-width: 600px) {
+                            .container {
+                                padding: 12px;
+                                border-radius: 12px;
+                            }
+                            .back-link {
+                                font-size: 13px;
+                                padding: 6px 14px;
+                                gap: 5px;
+                            }
+                            .status-bar h2 {
+                                font-size: 17px;
+                            }
+                            .badge {
+                                font-size: 10px;
+                                padding: 1px 10px;
+                            }
+                            .video-title {
+                                font-size: 12px;
+                            }
+                            .info {
+                                font-size: 12px;
+                                padding: 10px 12px;
+                            }
+                            .info a {
+                                font-size: 12px;
+                            }
+                        }
+                        @media (max-width: 400px) {
+                            body {
+                                padding: 6px;
+                            }
+                            .container {
+                                padding: 8px;
+                                border-radius: 10px;
+                            }
+                            .back-link {
+                                font-size: 12px;
+                                padding: 5px 12px;
+                            }
+                            .status-bar {
+                                gap: 8px;
+                            }
+                            .status-bar h2 {
+                                font-size: 15px;
+                            }
+                            .info {
+                                font-size: 11px;
+                                padding: 8px 10px;
+                            }
+                        }
                     </style>
                 </head>
                 <body>
                     <div class="container">
-                        <!-- ⬆️ ব্যাক বাটন এখন একদম উপরে -->
+                        <!-- ⬆️ ব্যাক বাটন একদম উপরে -->
                         <a href="/" class="back-link">← Back to Home</a>
 
                         <div class="status-bar">
@@ -526,7 +629,7 @@ def play_video():
                         </div>
                         
                         <div class="info">
-                            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
                                 <div>
                                     <strong>📹 Video:</strong> 
                                     <a href="{{ video_url }}" target="_blank">{{ video_url[:60] }}...</a>
@@ -565,22 +668,22 @@ def play_video():
             """, m3u8_url=m3u8_url, video_url=video_url)
         else:
             return render_template_string("""
-                <div style="padding: 40px; text-align: center; background: #0a0a0a; color: #fff; min-height: 100vh; font-family: Arial;">
-                    <div style="max-width: 600px; margin: 0 auto;">
-                        <h2 style="color: #ff4444;">❌ Could not find M3U8 URL</h2>
-                        <p style="color: #888; margin: 20px 0;">The video might be unavailable or blocked in your region.</p>
-                        <a href="/" style="color: #4CAF50; text-decoration: none; display: inline-block; padding: 10px 30px; background: #222; border-radius: 6px;">← Go Home</a>
+                <div style="padding: 40px 20px; text-align: center; background: #0a0a0a; color: #fff; min-height: 100vh; font-family: Arial; display: flex; align-items: center; justify-content: center;">
+                    <div style="max-width: 500px; width: 100%;">
+                        <h2 style="color: #ff4444; font-size: 24px;">❌ Could not find M3U8 URL</h2>
+                        <p style="color: #888; margin: 20px 0; font-size: 15px;">The video might be unavailable or blocked in your region.</p>
+                        <a href="/" style="color: #4CAF50; text-decoration: none; display: inline-block; padding: 12px 30px; background: #222; border-radius: 10px; font-weight: 500;">← Go Home</a>
                     </div>
                 </div>
             """)
     except Exception as e:
         logger.error(f"❌ Play error: {str(e)}")
         return render_template_string("""
-            <div style="padding: 40px; text-align: center; background: #0a0a0a; color: #fff; min-height: 100vh; font-family: Arial;">
-                <div style="max-width: 600px; margin: 0 auto;">
-                    <h2 style="color: #ff4444;">❌ Error</h2>
-                    <p style="color: #888; margin: 20px 0;">{{ error }}</p>
-                    <a href="/" style="color: #4CAF50; text-decoration: none; display: inline-block; padding: 10px 30px; background: #222; border-radius: 6px;">← Go Home</a>
+            <div style="padding: 40px 20px; text-align: center; background: #0a0a0a; color: #fff; min-height: 100vh; font-family: Arial; display: flex; align-items: center; justify-content: center;">
+                <div style="max-width: 500px; width: 100%;">
+                    <h2 style="color: #ff4444; font-size: 24px;">❌ Error</h2>
+                    <p style="color: #888; margin: 20px 0; font-size: 15px;">{{ error }}</p>
+                    <a href="/" style="color: #4CAF50; text-decoration: none; display: inline-block; padding: 12px 30px; background: #222; border-radius: 10px; font-weight: 500;">← Go Home</a>
                 </div>
             </div>
         """, error=str(e))
